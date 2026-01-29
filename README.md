@@ -1,4 +1,4 @@
-# SMS Spam Classifier
+# Message Spam Classifier
 
 This project trains models to classify SMS messages as spam or ham, and exposes a FastAPI backend for predictions.
 
