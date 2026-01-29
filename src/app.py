@@ -3,7 +3,8 @@ import joblib
 from pathlib import Path
 from preprocessing import clean_text
 
-MODEL_DIR = Path(__file__).resolve().parent / "models"
+MODEL_DIR = Path(__file__).resolve().parent.parent / "models"
+
 
 @st.cache_resource
 def load_models():
