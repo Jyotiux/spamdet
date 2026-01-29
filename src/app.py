@@ -14,7 +14,7 @@ def load_models():
 
 vectorizer, model = load_models()
 
-st.title("📩 Text Spam Classifier")
+st.title("⌯⌲ Message Spam Classifier")
 
 msg = st.text_area("Enter message")
 
