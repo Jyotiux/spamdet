@@ -14,7 +14,7 @@ def load_models():
 
 vectorizer, model = load_models()
 
-st.title("⌯⌲ Message Spam Classifier")
+st.title("📩 Text Spam Classifier")
 
 msg = st.text_area("Enter message")
 
@@ -24,8 +24,19 @@ if st.button("Predict"):
     else:
         cleaned = clean_text(msg)
         X = vectorizer.transform([cleaned])
-        pred = model.predict(X)[0]
-        prob = model.predict_proba(X).max()
 
-        st.success(f"Prediction: {pred}")
-        st.write(f"Confidence: {prob:.2f}")
+        pred = model.predict(X)[0]
+        probs = model.predict_proba(X)[0]
+
+        ham_prob = probs[0] * 100
+        spam_prob = probs[1] * 100
+
+        st.success(f"Prediction: {pred.upper()}")
+
+        st.subheader("Confidence")
+
+        st.write(f"Ham: {ham_prob:.2f}%")
+        st.progress(int(ham_prob))
+
+        st.write(f"Spam: {spam_prob:.2f}%")
+        st.progress(int(spam_prob))
